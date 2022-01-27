@@ -41,9 +41,5 @@ public class PurchaseProduct {
         select.selectByIndex(1);
         Thread.sleep(2000);
         btnAddCart.click();
-        Thread.sleep(2000);
-        viewCart.get(2).click();
-        btnCheckout.click();
-
     }
 }
