@@ -13,9 +13,9 @@ public class PurchaseProduct {
     WebDriver driver;
     @FindBy(css = "img")
     List<WebElement> imgProducts;
-    @FindBy(name = "add-to-cart")
+    @FindBy(className = "single_add_to_cart_button")
     WebElement btnAddCart;
-    @FindBy(xpath = "//a[contains(text(),\"View cart\")]")
+    @FindBy(css = "i")
     List<WebElement> viewCart;
     @FindBy(xpath = "//a[contains(text(),\"Proceed to checkout\")]")
     WebElement btnCheckout;
@@ -23,6 +23,16 @@ public class PurchaseProduct {
     WebElement dropdown;
     @FindBy(className = "entry-title")
     WebElement prodName;
+    @FindBy(className = "product-name")
+    List<WebElement> matchColorCart;
+    @FindBy(className = "input-text")
+    List<WebElement> quantityModify;
+    @FindBy(name = "update_cart")
+    WebElement updateCart;
+    @FindBy(className = "product-price")
+    List<WebElement> basePrice;
+    @FindBy(xpath = "//td[@data-title = \"Subtotal\"]")
+    WebElement subtotalPrice;
 
     public PurchaseProduct(WebDriver driver) {
         this.driver = driver;
@@ -41,5 +51,22 @@ public class PurchaseProduct {
         select.selectByIndex(1);
         Thread.sleep(2000);
         btnAddCart.click();
+        viewCart.get(3).click();
+        String colorName = matchColorCart.get(1).getText();
+        Assert.assertEquals("Black pants - Red", colorName);
+    }
+
+    public void addQuantity() throws InterruptedException {
+        quantityModify.get(0).clear();
+        quantityModify.get(0).sendKeys("2");
+        updateCart.click();
+        String unitText = basePrice.get(1).getText().substring(1, 3);
+        int unitPrice = Integer.parseInt(unitText);
+        int subTotal = unitPrice * 2;
+        Thread.sleep(5000);
+        String subText = subtotalPrice.getText().substring(1, 4);
+        int matchTotal = Integer.parseInt(subText);
+        Assert.assertEquals(subTotal, matchTotal);
+        btnCheckout.click();
     }
 }

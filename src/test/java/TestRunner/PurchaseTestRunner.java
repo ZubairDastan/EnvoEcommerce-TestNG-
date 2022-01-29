@@ -19,5 +19,9 @@ public class PurchaseTestRunner extends EnvironmentSetup {
         purchase.selectColor();
     }
 
-    
+    @Test(priority = 3, groups = "purchase", description = "Increase quantity and update cart")
+    public void increaseQuantity() throws InterruptedException {
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.addQuantity();
+    }
 }
