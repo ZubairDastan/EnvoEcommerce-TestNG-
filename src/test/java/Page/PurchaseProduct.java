@@ -186,7 +186,7 @@ public class PurchaseProduct {
         Thread.sleep(3000);
         String response = errorList.get(0).getText();
         System.out.println(response);
-        Assert.assertEquals("is not a valid postcode / ZIP.", response);
+        Assert.assertEquals("Billing Postcode is not a valid postcode / ZIP.", response);
     }
     public void invalidCoupon() throws InterruptedException {
         fName.clear();
@@ -216,11 +216,13 @@ public class PurchaseProduct {
         Thread.sleep(1000);
         applyCoupon.click();
         Thread.sleep(1000);
-        btnConfirmOrder.click();
-        Thread.sleep(3000);
         String response = errorList.get(0).getText();
         System.out.println(response);
-        Assert.assertEquals("Invalid billing email address", response);
+        Assert.assertEquals("Coupon \"asd1325\" does not exist!", response);
+
+        Thread.sleep(1000);
+        btnConfirmOrder.click();
+        Thread.sleep(3000);
     }
 
     public void validOrder() throws InterruptedException {
