@@ -5,6 +5,7 @@ import Setup.EnvironmentSetup;
 import org.testng.annotations.Test;
 
 public class PurchaseTestRunner extends EnvironmentSetup {
+
     @Test(priority = 1, groups = "purchase", description = "Select a product")
     public void selectMyProduct() throws InterruptedException {
         driver.get("https://envothemes.com/envo-ecommerce/shop/");
@@ -13,7 +14,7 @@ public class PurchaseTestRunner extends EnvironmentSetup {
 
     }
 
-    @Test(priority = 2, groups = "purchase", description = "Add product in cart")
+    @Test(priority = 2, groups = "purchase", description = "Select color and add in cart")
     public void selectProductColor() throws InterruptedException {
         PurchaseProduct purchase = new PurchaseProduct(driver);
         purchase.selectColor();
@@ -23,5 +24,46 @@ public class PurchaseTestRunner extends EnvironmentSetup {
     public void increaseQuantity() throws InterruptedException {
         PurchaseProduct purchase = new PurchaseProduct(driver);
         purchase.addQuantity();
+    }
+
+    @Test(priority = 4, groups = "purchase", description = "Place order without any billing info")
+    public void invalidOrder() throws InterruptedException {
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.placeOrder();
+    }
+
+    @Test(priority = 5, groups = "purchase", description = "Put invalid email in email field")
+    public void wrongEmail() throws InterruptedException {
+        driver.get("https://envothemes.com/envo-ecommerce/checkout/");
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.invalidMail();
+    }
+
+    @Test(priority = 6, groups = "purchase", description = "Put text as phone number")
+    public void wrongPhone() throws InterruptedException {
+        driver.get("https://envothemes.com/envo-ecommerce/checkout/");
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.invalidPhone();
+    }
+
+    @Test(priority = 7, groups = "purchase", description = "Put invalid postal code")
+    public void wrongPostCode() throws InterruptedException {
+        driver.get("https://envothemes.com/envo-ecommerce/checkout/");
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.invalidPostCode();
+    }
+
+    @Test(priority = 8, groups = "purchase", description = "Put invalid coupon code")
+    public void wrongCoupon() throws InterruptedException {
+        driver.get("https://envothemes.com/envo-ecommerce/checkout/");
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.invalidCoupon();
+    }
+
+    @Test(priority = 9, groups = "purchase", description = "Final order placing")
+    public void placeOrderFinal() throws InterruptedException {
+        driver.get("https://envothemes.com/envo-ecommerce/checkout/");
+        PurchaseProduct purchase = new PurchaseProduct(driver);
+        purchase.validOrder();
     }
 }
