@@ -64,6 +64,11 @@ public class PurchaseProduct {
         PageFactory.initElements(driver, this);
     }
 
+    public void productVisiblity() throws InterruptedException {
+        imgProducts.get(1).click();
+        Thread.sleep(2000);
+    }
+
     public void matchName() throws InterruptedException {
         imgProducts.get(1).click();
         Thread.sleep(2000);
