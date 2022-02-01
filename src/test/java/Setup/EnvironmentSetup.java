@@ -14,7 +14,7 @@ import java.time.Duration;
 public class EnvironmentSetup {
     public WebDriver driver;
 
-    @BeforeTest(groups = "purchase")
+    @BeforeTest(groups = "purchase") // (groups = "SalePurchase")
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
         ChromeOptions ops = new ChromeOptions();
@@ -36,9 +36,9 @@ public class EnvironmentSetup {
         }
     }
 
-    @AfterTest(groups = "purchase")
+    @AfterTest(groups = "purchase") // (groups = "SalePurchase")
     public void logout() {
-        driver.close();
+//        driver.close();
     }
 
 }

@@ -2,6 +2,7 @@
     <test name="E-commerce portal login">
         <classes>
             <class name="TestRunner.PurchaseTestRunner"/>
+            <class name="TestRunner.SaleTestRunner" />
         </classes>
     </test>
 </suite>

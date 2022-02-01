@@ -10,7 +10,7 @@ public class PurchaseTestRunner extends EnvironmentSetup {
     public void viewProduct() throws InterruptedException {
         driver.get("https://envothemes.com/envo-ecommerce/shop/");
         PurchaseProduct purchase = new PurchaseProduct(driver);
-        purchase.productVisiblity();
+        purchase.productVisibility();
     }
 
     @Test(priority = 2, groups = "purchase", description = "Select a product")

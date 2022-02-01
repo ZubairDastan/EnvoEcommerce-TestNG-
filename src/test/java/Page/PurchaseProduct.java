@@ -10,7 +10,7 @@ import org.testng.Assert;
 import java.util.List;
 
 public class PurchaseProduct {
-    WebDriver driver;
+    WebDriver webDriver;
     @FindBy(css = "img")
     List<WebElement> imgProducts;
     @FindBy(className = "single_add_to_cart_button")
@@ -41,9 +41,9 @@ public class PurchaseProduct {
     WebElement fName;
     @FindBy(id = "billing_last_name")
     WebElement lName;
-    @FindBy(id="billing_address_1")
+    @FindBy(id = "billing_address_1")
     WebElement address;
-    @FindBy(id="billing_city")
+    @FindBy(id = "billing_city")
     WebElement town;
     @FindBy(id = "billing_postcode")
     WebElement postCode;
@@ -60,11 +60,11 @@ public class PurchaseProduct {
 
 
     public PurchaseProduct(WebDriver driver) {
-        this.driver = driver;
+        this.webDriver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void productVisiblity() throws InterruptedException {
+    public void productVisibility() throws InterruptedException {
         imgProducts.get(1).click();
         Thread.sleep(2000);
     }
@@ -137,6 +137,7 @@ public class PurchaseProduct {
         System.out.println(response);
         Assert.assertEquals("Invalid billing email address", response);
     }
+
     public void invalidPhone() throws InterruptedException {
         fName.clear();
         fName.sendKeys("Zubair");
@@ -165,6 +166,7 @@ public class PurchaseProduct {
         System.out.println(response);
         Assert.assertNotSame("is not a valid phone number", response);
     }
+
     public void invalidPostCode() throws InterruptedException {
         fName.clear();
         fName.sendKeys("Zubair");
@@ -193,6 +195,7 @@ public class PurchaseProduct {
         System.out.println(response);
         Assert.assertEquals("Billing Postcode is not a valid postcode / ZIP.", response);
     }
+
     public void invalidCoupon() throws InterruptedException {
         fName.clear();
         fName.sendKeys("Zubair");
