@@ -10,5 +10,5 @@ This is a test automation project created in TestNG in java. I have tried to aut
 6. Run command `allure generate allure-results --clean -o allure-report` to generate allure report.
 
 ## Screenshots
-![Screenshot 1](https://raw.githubusercontent.com/ZubairDastan/EnvoEcommerce-TestNG-/main/Allure%201.jpg)
-![Screenshot 2](https://raw.githubusercontent.com/ZubairDastan/EnvoEcommerce-TestNG-/main/Allure%202.jpg)
+![Allure 1](https://user-images.githubusercontent.com/13168091/151910397-d2437dd9-1e0d-465b-8adc-5ae370816264.jpg)
+![Allure 2](https://user-images.githubusercontent.com/13168091/151910404-d79e2a7d-bfd3-4b71-966f-803117b6bbee.jpg)
